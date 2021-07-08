@@ -1,16 +1,15 @@
-var mongoose=require('mongoose');
-var db = require('../database');
-// create an schema
+const mongoose = require('mongoose');
+
 var userSchema = new mongoose.Schema({
             Time: String,
-            DeviceID:String,
-            Humidity:String,
-            Temperature:String
+            Device_ID: String,
+            Humidity: Number,
+            Temperature: Number,
+            timestamp: String
         });
-userTable=mongoose.model('users',userSchema);
+userTable=mongoose.model('data_sensor',userSchema);
         
 module.exports={
-     
      fetchData:function(callback){
         var userData=userTable.find({});
         userData.exec(function(err, data){
@@ -20,3 +19,4 @@ module.exports={
         
      }
 }
+

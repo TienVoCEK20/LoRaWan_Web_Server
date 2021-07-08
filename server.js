@@ -30,16 +30,13 @@ mongoose.connect(dbConfig.url, {
     process.exit();
 });
 
-// Require Notes routes
-var fetchRouter = require('./app/routes/note.routes.js');
-
-app.use('/', fetchRouter);
-
 // define a simple route
 app.get('/', (req, res) => {
     res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
 });
 
+// Require Notes routes
+require('./app/routes/note.routes.js')(app);
 
 // listen for requests
 app.listen(3000, () => {
