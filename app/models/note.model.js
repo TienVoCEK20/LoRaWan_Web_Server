@@ -3,7 +3,7 @@ var db = require('../database');
 // create an schema
 var userSchema = new mongoose.Schema({
             Time: String,
-            Device ID:String,
+            DeviceID:String,
             Humidity:String,
             Temperature:String
         });
