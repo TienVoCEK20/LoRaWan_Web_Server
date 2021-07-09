@@ -5,7 +5,7 @@ var collection, client;
 
 const db_name = "lora_wan";
 const collection_name = "sensor_data";
-const uri = "mongodb+srv://Lora_WAN:bkiotlab@2021@cluster0.3qbjg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = "mongodb://localhost:27017/iot_data";
 
 mqtt_options={
     clientId:"F5JJ4TAAXSNV3BPVW2J36IJPOKZ2UIK7XMPDSSI",
@@ -34,6 +34,8 @@ function setup_connect(err, client) {
 
     mqttclient = mqtt.connect('mqtt://au1.cloud.thethings.network:1883', mqtt_options);
     mqttclient.subscribe(mqtt_topics_list);
+    mqttclient.on('connect',mqtt_connect_handler);
+    mqttclient.on('error',mqtt_error_handler);
     mqttclient.on('message', mqtt_message_handler);
 
 }
