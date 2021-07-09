@@ -5,7 +5,7 @@ var collection, client;
 
 const db_name = "lora_wan";
 const collection_name = "sensor_data";
-const uri = "mongodb+srv://Lora_WAN:bkiotlab@2021@cluster0.3qbjg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = "mongodb://localhost:27017/iot_data";
 
 mqtt_options={
     clientId:"F5JJ4TAAXSNV3BPVW2J36IJPOKZ2UIK7XMPDSSI",
