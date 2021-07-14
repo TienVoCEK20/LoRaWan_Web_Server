@@ -1,25 +1,33 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const path = require('path');
+const morgan = require('morgan');
+const mongoose = require('mongoose');
 
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
+const PORT = process.env.PORT || 8080;
+
+const routes = require('./app/routes/api');
+
+const dbName = "lora_wan";
+
 // Connection URL
 const url = 'mongodb://localhost:27017';
 
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
-// Database Name
-const dbName = 'lora_wan';
+mongoose.connection.on('connected',() => {
+  console.log('Mongoose is connected!!!');
+}) 
 
-// Create a new MongoClient
 const client = new MongoClient(url);
 
-
-app.set('view engine', 'ejs')
+//app.set('view engine', 'ejs')
 
 app.get('/sensor_data', (req,res) => {
-  //let device_list = [{'name': 'asdasd'}, {'name': 'tmp36'}]
   const db = client.db(dbName);
   // Get the documents collection
   const collection = db.collection('sensor_data');
@@ -28,18 +36,21 @@ app.get('/sensor_data', (req,res) => {
     res.render('sensor_data', {'sensor_data': device_list})
   });
 })
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
 
+//data parsing
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 
-
-// Use connect method to connect to the Server
-client.connect(function(err) {
-  assert.strictEqual(null, err);
-  console.log("Connected successfully to mongo database");
-
-  app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
-  })
+client.connect((err) => {
+  assert.strictEqual(null,err);
 });
+
+app.use(morgan('tiny'));
+app.use('/',routes);
+
+
+
+app.listen(PORT,console.log(`Server is starting at ${PORT}`));
+
+
+

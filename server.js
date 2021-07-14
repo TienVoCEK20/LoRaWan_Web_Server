@@ -7,6 +7,7 @@ var mqtt = require('mqtt');
 var mongodb = require('mongodb');
 var mongodbClient = mongodb.MongoClient;
 var collection, client;
+const PORT = process.env.PORT || 8080;
 
 const db_name = "lora_wan";
 const collection_name = "sensor_data";

@@ -7,16 +7,16 @@ var userSchema = new mongoose.Schema({
             Temperature: Number,
             timestamp: String
         });
-userTable=mongoose.model('data_sensor',userSchema);
+var userTable=mongoose.model('data_sensor',userSchema);
         
-module.exports={
+/*module.exports={
      fetchData:function(callback){
         var userData=userTable.find({});
         userData.exec(function(err, data){
             if(err) throw err;
             return callback(data);
-        })
-        
+        })        
      }
-}
+}*/
+module.exports = userTable; 
 

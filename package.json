@@ -1,27 +1,61 @@
 {
-  "name": "easy-notes-app",
+  "name": "lorawan-web-server",
   "version": "1.0.0",
   "description": "test",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node web_display.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently -n 'server,client' -c 'red,green' \"nodemon web_display.js\" \"npm run client\""
   },
   "author": "tien",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
+    "concurrently": "^6.2.0",
+    "demon": "^1.4.4",
     "express": "^4.17.1",
     "mongodb": "^3.6.10",
     "mongoose": "^5.13.2",
+    "morgan": "^1.10.0",
     "mqtt": "^4.2.8",
-    "npm": "^7.19.1"
+    "node": "^16.4.1",
+    "npm": "^7.19.1",
+    "react-dom": "^17.0.2",
+    "webpack": "^5.44.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
   },
-  "devDependencies": {},
   "keywords": [
     "Express",
     "RestAPI",
     "MongoDB",
     "Mongoose",
     "Notes"
-  ]
+  ],
+  "devDependencies": {
+    "nodemon": "^2.0.12",
+    "react": "^17.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TienVoCEK20/LoRaWan_Web_Server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TienVoCEK20/LoRaWan_Web_Server/issues"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "modules": false
+        }
+      ],
+      "react"
+    ]
+  },
+  "homepage": "https://github.com/TienVoCEK20/LoRaWan_Web_Server#readme"
 }
