@@ -62,11 +62,11 @@ function mqtt_message_handler(topic, message, packet)
     var time = data["uplink_message"]["received_at"]
     
     // Console log for validation
-    console.log("Time:" + time, "\n",
+    /*console.log("Time:" + time, "\n",
                 "Device ID: " + id, "\n",
                 "Humidity: " + hum, "\n",
                 "Temperature: " + temp, "\n");
-
+    */
     // MongoDB collection update
     collection.updateOne(
         { _id: id }, 

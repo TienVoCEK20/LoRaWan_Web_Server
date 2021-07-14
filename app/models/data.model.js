@@ -5,7 +5,6 @@ var userSchema = new mongoose.Schema({
             Device_ID: String,
             Humidity: Number,
             Temperature: Number,
-            timestamp: String
         });
 var userTable=mongoose.model('data_sensor',userSchema);
         
