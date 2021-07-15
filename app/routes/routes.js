@@ -29,7 +29,6 @@ router.get('/devices/:id',(req,res) => {
     });
 })
 
-router.get('/devices/:id')
 router.put('/update/:id',(req,res) => {
     var id = req.params.id;
     SensorData.findOne({_id: id}, (err,foundObject) => {
@@ -57,6 +56,7 @@ router.put('/update/:id',(req,res) => {
     
     
 });
+
 router.post('/save', (req, res) => {
     const data = req.body;
 

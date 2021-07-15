@@ -134,8 +134,8 @@ function mqtt_message_handler(topic, message, packet)
               console.log(err);
               res.status(500).send();
           }else {
-              if(req.body.time){
-                  foundObject.time = req.body.Time;
+              if(req.body.Time){
+                  foundObject.Time = req.body.Time;
               }
               else if(req.body.Humidity){
                   foundObject.Humidity = req.body.Humidity;
@@ -148,6 +148,9 @@ function mqtt_message_handler(topic, message, packet)
               if(err){
                   console.log(err);
                   res.status(500).send();
+              }
+              else{
+                  console.log('update successfully');
               } 
           })       
       })

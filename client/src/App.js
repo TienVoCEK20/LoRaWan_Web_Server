@@ -6,40 +6,51 @@ import React, { useEffect } from 'react';
 class App extends React.Component{
 
     state = {
-        sensors_data: []
+        _id: '',
+        Time: '',
+        Device_ID: '',
+        Humidity: '',
+        Temperature: '',
+        posts: []        
     };
 
     componentDidMount = () => {
-        this.getSenSorsData();
-    }
+        this.getSensorsData();
+    };
 
     getSensorsData = () => {
         axios.get('/api')
             .then((response) => {
                 const data = response.data;
-                this.setState({sensors_data: data});
+                this.setState({ posts: data });
                 console.log('Data has been received!!!');
             })
-            .catch(() => {
-                alert('Data has been received!!');
+            .catch((err) => {
+                throw(err);
             });
     }
-    displaySensorsData = (sensors_data) => {
-        //if (!sensors_data.length) return null;
-
-        //sensors_data.map(() => {
-            <div>
-                <p>{sensors_data.tem}</p>
+    displaySensorsData = (posts) => {
+        if (!posts.length)
+         {
+             console.log('No data');
+             return null;
+         }
+        else
+             console.log('length: ',posts.length)
+        return posts.map((post,index) => {
+            <div key={index}>
+                <h3>{post._id}</h3>
             </div>
-        //});
+        });
     };
-
     render() {
+        console.log('State: ', this.state);
+
         return(
         <div>
             <h2> Welcome to my App </h2>
-            <div>
-                {this.displaySensorsData()}
+            <div className="data-">
+                {this.displaySensorsData(this.state.posts)}
             </div>
         </div>
         )

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 var userSchema = new mongoose.Schema({
+            _id: String,
             Time: String,
             Device_ID: String,
             Humidity: Number,
@@ -8,14 +9,5 @@ var userSchema = new mongoose.Schema({
         });
 var userTable=mongoose.model('data_sensor',userSchema);
         
-/*module.exports={
-     fetchData:function(callback){
-        var userData=userTable.find({});
-        userData.exec(function(err, data){
-            if(err) throw err;
-            return callback(data);
-        })        
-     }
-}*/
 module.exports = userTable; 
 
