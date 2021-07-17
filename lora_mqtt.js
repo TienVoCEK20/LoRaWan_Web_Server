@@ -15,11 +15,13 @@ mqtt_options={
 };
 
 mqtt_topics_list = [
+    "v3/bkiotlab-lorawapp@ttn/devices/a840411431832b1b/up",
     "v3/bkiotlab-lorawapp@ttn/devices/a840415dd1832b10/up",
     "v3/bkiotlab-lorawapp@ttn/devices/a84041739182dd05/up",
     "v3/bkiotlab-lorawapp@ttn/devices/a84041a54182a79f/up",
     "v3/bkiotlab-lorawapp@ttn/devices/a84041b21182dd3a/up",
-]
+    "v3/bkiotlab-lorawapp@ttn/devices/a84041fd11832b1a/up",
+];
 
 
 mongodbClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }, setup_connect);
