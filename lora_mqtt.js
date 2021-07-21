@@ -8,9 +8,9 @@ const collection_name = "sensor_data";
 const uri = "mongodb://localhost:27017/iot_data";
 
 mqtt_options={
-    clientId:"F5JJ4TAAXSNV3BPVW2J36IJPOKZ2UIK7XMPDSSI",
-    username:"bkiotlab-lorawapp@ttn",
-    password:"NNSXS.F5JJ4TAAXSNV3BPVW2J36IJPOKZ2UIK7XMPDSSI.SICOM5YBB5WLTXIN4QZWXHE6AYTFJIH37AR45BWHB5IRYNUJSFZA",
+    clientId:,
+    username:,
+    password:,
     clean:true
 };
 
